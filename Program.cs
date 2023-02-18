@@ -33,9 +33,42 @@
 
 //Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
 
-int[] CreateRandomArray(int size, int minValue, int maxValue)
+// int[] CreateRandomArray(int size, int minValue, int maxValue)
+// {
+//     int[] array = new int[size];
+//     for(int i = 0; i < size; i++)
+//     {
+//         array[i] = new Random().Next(minValue, maxValue + 1);
+//     }
+//     return array;
+// }
+
+// void ShowResult(int[] array)
+// {
+//     int sum = 0;
+//     for(int i = 0; i < array.Length; i++)
+//     {
+//         Console.Write(array[i] + " ");
+//         if((i != 0) && (i % 2 != 0)) sum += array[i];
+//     }
+//     Console.WriteLine();
+//     Console.Write("-> " + sum);
+// }
+
+// Console.Write("Введите размер одномерного массива: ");
+// int size = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите минимально возможное значение элемента массива: ");
+// int minValue = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите максимально возможное значение элемента массива: ");
+// int maxValue = Convert.ToInt32(Console.ReadLine());
+
+// ShowResult(CreateRandomArray(size, minValue, maxValue));
+
+//Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+
+double[] CreateRandomArray(int size, int minValue, int maxValue)
 {
-    int[] array = new int[size];
+    double[] array = new double[size];
     for(int i = 0; i < size; i++)
     {
         array[i] = new Random().Next(minValue, maxValue + 1);
@@ -43,16 +76,18 @@ int[] CreateRandomArray(int size, int minValue, int maxValue)
     return array;
 }
 
-void ShowResult(int[] array)
+void ShowResult(double[] array, int maxValue)
 {
-    int sum = 0;
+    double min = maxValue;
+    double max = 0;
     for(int i = 0; i < array.Length; i++)
     {
         Console.Write(array[i] + " ");
-        if((i != 0) && (i % 2 != 0)) sum += array[i];
+        if(array[i] < min) min = array[i];
+        if(array[i] > max) max = array[i];
     }
     Console.WriteLine();
-    Console.Write("-> " + sum);
+    Console.Write("-> " + (max - min));
 }
 
 Console.Write("Введите размер одномерного массива: ");
@@ -62,4 +97,4 @@ int minValue = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите максимально возможное значение элемента массива: ");
 int maxValue = Convert.ToInt32(Console.ReadLine());
 
-ShowResult(CreateRandomArray(size, minValue, maxValue));
+ShowResult(CreateRandomArray(size, minValue, maxValue), maxValue);
